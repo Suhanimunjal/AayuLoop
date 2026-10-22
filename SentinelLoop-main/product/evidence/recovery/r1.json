@@ -1,0 +1,83 @@
+{
+ "data_class": "SYNTHETIC",
+ "rows_before_backup": 5760,
+ "backup": {
+  "exit": 0,
+  "seconds": 0.21,
+  "bytes": 954368,
+  "anchor": {
+   "seq": 15,
+   "hash": "dc46b3a837c1f26bb1c60abc97aa35c2366f5331ab97f3c18114532b364c2e1f",
+   "ts": "2026-10-18T08:54:48.815Z"
+  }
+ },
+ "rows_after_backup": 2880,
+ "crash": {
+  "integrity_check": "ok",
+  "readings": 14400,
+  "batches_with_mismatched_counts": 0,
+  "audit_verify_exit": 0,
+  "audit": {
+   "n": 21,
+   "valid": true,
+   "first_bad_seq": null,
+   "reason": null,
+   "events_signed_with_dev_key": 0,
+   "anchor_checked": true
+  },
+  "restart_to_ready_s": 4.85
+ },
+ "restore": {
+  "restore_exit": 0,
+  "verify_exit": 0,
+  "verify": {
+   "n": 15,
+   "valid": true,
+   "first_bad_seq": null,
+   "reason": null,
+   "events_signed_with_dev_key": 0,
+   "anchor_checked": true
+  },
+  "restore_to_ready_s": 6.34,
+  "assets": 2,
+  "work_order_state": "APPROVED",
+  "readings_restored": 5760,
+  "readings_lost_after_backup": 2880
+ },
+ "tamper": {
+  "verify_exit": 1,
+  "result": {
+   "n": 3,
+   "valid": false,
+   "first_bad_seq": 3,
+   "reason": "payload does not match its hash",
+   "events_signed_with_dev_key": 0,
+   "anchor_checked": true
+  }
+ },
+ "truncation": {
+  "verify_exit": 1,
+  "result": {
+   "n": 12,
+   "valid": false,
+   "first_bad_seq": 15,
+   "reason": "anchored event missing or changed (truncation or rewrite)",
+   "events_signed_with_dev_key": 0,
+   "anchor_checked": true
+  }
+ },
+ "log": [
+  "14:24:40 init exit 0",
+  "14:24:41 create-admin exit 0",
+  "14:24:48 ingested 5760 rows, work order WO-000001 approved",
+  "14:24:49 backup exit 0 (954368 bytes, anchor seq 15)",
+  "14:24:49 ingested 2880 more rows after the backup (these define the RPO)",
+  "14:24:51 server killed during ingestion (client saw ['ReadError'])",
+  "14:24:51 after crash: integrity ok, readings 14400, audit verify exit 0",
+  "14:24:56 restarted on the live database in 4.85 s",
+  "14:24:56 live database deleted (simulated disk loss)",
+  "14:25:03 restored, audit verify exit 0 (anchor checked: True), ready in 6.34 s; work order state APPROVED; readings 5760",
+  "14:25:03 tampered copy: verify exit 1",
+  "14:25:04 truncated copy: verify exit 1"
+ ]
+}
